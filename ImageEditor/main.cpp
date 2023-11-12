@@ -437,26 +437,6 @@ void flip(Image& image) {
 
 }
 
-// old main
-	/*task1("input/layer1.tga", "input/pattern1.tga");
-
-	task2("input/car.tga", "input/layer2.tga");
-
-	Pixel* task3_arr = task3("input/layer1.tga", "input/pattern2.tga", "input/text.tga");
-
-	Pixel* task4_arr = task4("input/layer2.tga", "input/circles.tga", "input/pattern2.tga");
-
-	task5("input/layer1.tga", "input/pattern1.tga");
-
-	task6("input/car.tga");
-
-	task7("input/car.tga");
-
-	task8("input/car.tga");
-
-	task9("input/layer_blue.tga", "input/layer_green.tga", "input/layer_red.tga");
-
-	task10("input/text2.tga");*/
 
 int main(int argc, char* argv[]) {
 
@@ -464,7 +444,7 @@ int main(int argc, char* argv[]) {
 	Image tracking, image2, image3, image_mult, image_sub, image_overlay, image_screen;
 	string current, output, file2, file3, file_mult, file_sub, file_overlay, file_screen;
 	unsigned char modifier;
-	int scale, to_add;
+	int channel_mod;
 
 	if (argc == 1 || strcmp(argv[1], "--help") == 0) {
 		cout << "Project 2: Image Processing, Fall 2023\n\nUsage:\n\t./project2.out [output] [firstImage] [method] [...]";
@@ -660,10 +640,6 @@ int main(int argc, char* argv[]) {
 					return 0;
 				}
 
-				/*file2 = argv[argI - 1];
-				file3 = argv[argI];
-				image2.read(file2);
-				image3.read(file3);*/
 
 				//put in BGR order
 				task9(image3, image2, tracking);
@@ -696,9 +672,8 @@ int main(int argc, char* argv[]) {
 					return 0;
 				}
 				try {
-					//modifier = (unsigned char)stoi((string)argv[argI]);
-					to_add = stoi((string)argv[argI]);
-					addred(tracking, to_add);
+					channel_mod = stoi((string)argv[argI]);
+					addred(tracking, channel_mod);
 				}
 				catch (exception& e) {
 					cout << "Invalid argument, expected number.";
@@ -713,8 +688,8 @@ int main(int argc, char* argv[]) {
 					return 0;
 				}
 				try {
-					to_add = stoi((string)argv[argI]);
-					addgreen(tracking, to_add);
+					channel_mod = stoi((string)argv[argI]);
+					addgreen(tracking, channel_mod);
 				}
 				catch (exception& e) {
 					cout << "Invalid argument, expected number.";
@@ -730,8 +705,8 @@ int main(int argc, char* argv[]) {
 					return 0;
 				}
 				try {
-					to_add = stoi((string)argv[argI]);
-					addblue(tracking, to_add);
+					channel_mod = stoi((string)argv[argI]);
+					addblue(tracking, channel_mod);
 				}
 				catch (exception& e) {
 					cout << "Invalid argument, expected number.";
@@ -747,8 +722,8 @@ int main(int argc, char* argv[]) {
 					return 0;
 				}
 				try {
-					scale = stoi((string)argv[argI]);
-					scalered(tracking, scale);
+					channel_mod = stoi((string)argv[argI]);
+					scalered(tracking, channel_mod);
 				}
 				catch (exception& e) {
 					cout << "Invalid argument, expected number.";
@@ -764,8 +739,8 @@ int main(int argc, char* argv[]) {
 					return 0;
 				}
 				try {
-					scale = stoi((string)argv[argI]);
-					scalegreen(tracking, scale);
+					channel_mod = stoi((string)argv[argI]);
+					scalegreen(tracking, channel_mod);
 				}
 				catch (exception& e) {
 					cout << "Invalid argument, expected number.";
@@ -781,8 +756,8 @@ int main(int argc, char* argv[]) {
 					return 0;
 				}
 				try {
-					scale = stoi((string)argv[argI]);
-					scaleblue(tracking, scale);
+					channel_mod = stoi((string)argv[argI]);
+					scaleblue(tracking, channel_mod);
 				}
 				catch (exception& e) {
 					cout << "Invalid argument, expected number.";
