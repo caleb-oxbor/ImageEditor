@@ -175,7 +175,7 @@ unsigned char overlay(unsigned char& a, unsigned char& b) {
 
 //task functions
 
-void task1(Image& image1, Image& image2) {
+void mult_img(Image& image1, Image& image2) {
 
 	for (int i = 0; i < image1.pixels.size(); i++) {
 		image1.pixels[i].blue = multiply(image1.pixels[i].blue, image2.pixels[i].blue);
@@ -185,7 +185,7 @@ void task1(Image& image1, Image& image2) {
 
 }
 
-void task2(Image& image1, Image& image2) {
+void sub_img(Image& image1, Image& image2) {
 
 	for (int i = 0; i < image1.pixels.size(); i++) {
 		image1.pixels[i].blue = subtract(image1.pixels[i].blue, image2.pixels[i].blue);
@@ -228,7 +228,7 @@ Pixel* task4(string file1, string file2, string file3) {
 
 }
 
-void task5(Image& image1, Image& image2) {
+void olay_img(Image& image1, Image& image2) {
 
 	for (int i = 0; i < image1.pixels.size(); i++) {
 		image1.pixels[i].blue = overlay(image1.pixels[i].blue, image2.pixels[i].blue);
@@ -508,7 +508,7 @@ int main(int argc, char* argv[]) {
 					return 0;
 				}
 
-				task1(tracking, image_mult);
+				mult_img(tracking, image_mult);
 
 				image_mult_file.close();
 
@@ -537,7 +537,7 @@ int main(int argc, char* argv[]) {
 					return 0;
 				}
 
-				task2(tracking, image_sub);
+				sub_img(tracking, image_sub);
 
 				image_sub_file.close();
 
@@ -566,7 +566,7 @@ int main(int argc, char* argv[]) {
 					return 0;
 				}
 
-				task5(tracking, image_overlay);
+				olay_img(tracking, image_overlay);
 
 				image_overlay_file.close();
 
